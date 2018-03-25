@@ -18,11 +18,12 @@ def ping(hostname):
     p = subprocess.Popen(ping_cmd, stdout=subprocess.PIPE,
                                stderr=subprocess.PIPE)
     out, err = p.communicate()
+    returncode = p.returncode
 
-    if(out != 0):
+    if(returncode > 0):
         # some error occurred with fping, such as DNS resolution, host doesn't exist, etc.
         # We return some values since we don't want an error to stop other tests...
-        return float('NaN'), float('NaN'), float('NaN'), 10, 100
+        return hostname, float('NaN'), float('NaN'), float('NaN'), 10, 100, 10
 
     # fping sends back statistics in stderr, since we specified -q...
     # Remove the hostname at the start of the string...
