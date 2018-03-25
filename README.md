@@ -6,9 +6,13 @@ The probe is designed to be simple and aimed at a target of a [Raspberry Pi](htt
 It requires fping and python to be installed, and functional networking and DNS to talk to the outside world.
 
 ### Probe Prerequisites
-* Ideally, a modern version of Debian on whatever device you want to use as a probe. A Raspberry Pi should work perfectly, or any server / computer, provided the number of hosts in your mesh is not too large.
-* Python 3.0 *(or possibly earlier versions. I've not really tested a great deal.)*
+Eventually, I'll convert this into a .deb and package all these up. But until then, here are the dependencies I've uncovered to make the probe work.
+
+* Ideally, a modern version of Debian on whatever device you want to use as a probe. A Raspberry Pi should work perfectly, or any server / computer, provided the number of hosts in your mesh is not too large. *(See [A warning about scaling](#a-warning-about-scaling))*
+* Python 2.7 *(or possibly earlier versions. I've not really tested a great deal.)*
 * fping  *(If you don't have this, `apt-get install fping` should get you up and running.)*
+* python-pip *(`aptitude install python-pip`)* is required for the `prometheus_client` library install
+* prometheus_client *(Python module: `pip install prometheus_client` to install, once you have pip installed.)*
 
 ## Interface
 The interface provides some custom web visualisations for the data collected.
