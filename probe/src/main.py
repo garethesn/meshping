@@ -33,7 +33,7 @@ def process_request(t):
     time.sleep(t)
 
 @REQUEST_TIME_PING_ARES.time()
-def ping_ares(t):
+def ping_ares():
     """A ping function that returns some statistics about network connectivity"""
     ping('ares.signal2noise.ie')
 
@@ -43,5 +43,6 @@ if __name__ == '__main__':
     # Generate some requests.
     while True:
         process_request(random.random())
+        ping_ares()
 
 exit
